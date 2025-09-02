@@ -13,14 +13,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+#root{
+  width: 100%;
+}
 body{
   font-family: "Codystar", sans-serif;
   font-weight: 400;
   font-style: normal;
-
+  padding: 0.5em;
   margin: 0;
-  min-height: 100vh;
+  min-height: fit-content;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -31,7 +33,8 @@ body{
 header {
   width: 100%;
   display: flex;
-  column-gap: 0.2em;
+  column-gap: 2em;
+  justify-content: space-evenly;
 }
 header img{
   width: 10em;
@@ -88,7 +91,7 @@ main .intro{
   width: 100%;
   display: flex;
   flex-direction: column;
-  row-gap: 2em;
+  row-gap: 1.5em;
 }
 progress {
   width: 100%;
@@ -124,6 +127,8 @@ progress {
   row-gap: 1em;
 }
 .question-answer-container h2{
+  padding-left: 0.3125em;
+  width: 100%;
   font-weight: 600;
   margin: 0;
   font-size: 1.0625em;
@@ -147,7 +152,25 @@ progress {
 }
 .answer:hover{
   background-color: var(--color-darkest);
-  transform: translateX(20px);
+  transform: translateX(1.2500em);
+}
+.answer.disabled:not(.selected):hover{
+  transition: none;
+  transform: none;}
+
+.answer.disabled:hover{
+  cursor: not-allowed;
+}
+.answers .selected{
+  transform: translateX(1.2500em);
+}
+.answers .wrong{
+  background-color: var(--color-accent);
+  color: var(--color-darkest);
+}
+.answers .correct {
+  background-color:  var(--color-theme);
+  color: var(--color-light);
 }
 
 .timer-next-container{
@@ -169,7 +192,7 @@ progress {
 .timer-next-container button{
   font-size: 1em;
   width: auto;
-  padding: 0.8em 1.5em;
+  padding: 0.8em 1.1em;
   text-align: center;
   background-color: var(--color-dark);
   border: 0.1250em solid var(--color-dark);
@@ -181,11 +204,39 @@ progress {
 .timer-next-container button:hover{
   background-color: var(--color-darkest);
 }
+.timer-next-container .buttons{
+  display: flex;
+  column-gap: 0.5em;
+}
+
+@media (min-width: 46.8750em) and (max-width: 1020px){
+  .quiz{
+    row-gap: 1em;
+  }
+  .question-answer-container{
+    h2{
+      font-size:1.4em;
+    }
+  }
+  .progress-bar{
+    p{
+      font-size: 1em;
+    }
+  }
+  .answers .answer{
+    font-size: 1em;
+    padding: 1.3em 1.5em;
+  }
+}
 
 @media (min-width: 75em){
   header{
+    column-gap: 0;
     h1{
-      font-size: 6em;
+      font-size: 7em;
+    }
+    img{
+      width: 15em;
     }
   }
   .progress-bar{
@@ -196,14 +247,22 @@ progress {
   .question-answer-container{
     h2{
       font-size: 1.5em;
+      width: 100%;
     }
     .answer{
       padding: 1.15em 1.8em;
       font-size: 1em ;
     }
   }
+  .timer-next-container{
+    button{
+      padding: 0.8em 1.3em;
+    }
+    p{
+      padding: 0.8em 1.3em;
+    }
+  }
 }
-
 
 @media (prefers-reduced-motion: reduce){
     * {
