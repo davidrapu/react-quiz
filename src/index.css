@@ -208,8 +208,51 @@ progress {
   display: flex;
   column-gap: 0.5em;
 }
-
-@media (min-width: 46.8750em) and (max-width: 1020px){
+.result-container{
+  width: 50em;
+  display: flex;
+  flex-direction: column;
+  row-gap: 4em;
+}
+.result-container .result{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 0.5em;
+  width: 100%;
+}
+.result p{
+  margin: 0;
+}
+.result #score{
+  background-color: var(--color-theme);
+  text-align: center;
+  padding: 1.3em 1em;
+  font-weight: 500;
+  font-size: 1em;
+  border-radius: 2em;
+}
+.reset{
+  display: flex;
+  justify-content: flex-end;
+}
+.reset button{
+  font-size: 1.2em;
+  background-color: var(--color-darkest);
+  width: auto;
+  padding: 0.4em 1em;
+  text-align: center;
+  background-color: var(--color-dark);
+  border: 0.1250em solid var(--color-dark);
+  color: var(--color-light);
+  cursor: pointer;
+  border-radius: 2em;
+  transition: all 0.3s ease-out;
+}
+.reset button:hover{
+  background-color: var(--color-darkest);
+}
+@media (min-width: 46.8750em) and (max-width: 63.7500em){
   .quiz{
     row-gap: 1em;
   }
@@ -226,6 +269,12 @@ progress {
   .answers .answer{
     font-size: 1em;
     padding: 1.3em 1.5em;
+  }
+    .result-container{
+    #score{
+      width: 60%;
+      font-size: 1.2em;
+    }
   }
 }
 
@@ -260,6 +309,12 @@ progress {
     }
     p{
       padding: 0.8em 1.3em;
+    }
+  }
+  .result-container{
+    #score{
+      width: 60%;
+      font-size: 1.5em;
     }
   }
 }
