@@ -1,40 +1,19 @@
-import questionList from "../../assets/data/questions.json";
-import { useReducer } from "react";
 import Question from "./Question";
 import Button from "../Button";
-
-const questions = questionList.questions;
-const initialState = {
-  num : 0,
-  userPoints : 0,
-  selectedId : null,
-  prevSelectedId: null,
-};
-
-function reducer(state, action){
-  switch (action.type) {
-    case 'Next':
-      return {...state, num: state.num + 1,  prevSelectedId: state.selectedId, selectedId: null}
-    case 'Prev':
-      return {...state, num: state.num - 1, selectedId: state.prevSelectedId}
-    case 'setSelectedId':
-      return {...state, selectedId: action.payload}
-    case 'increaseUserPoints':
-      return {...state, userPoints: state.userPoints + action.payload}
-    default:
-      return state
-  }
-}
-export default function Quiz() {
-  const [state, dispatch] = useReducer(reducer, initialState)
+export default function Quiz({state, dispatch, questions}) {
   function handleNext(){
     if (state.num < questions.length -1) dispatch({type : 'Next'})
+    else {
+      dispatch({type: 'setStatus', payload: 'finish'})
+      console.log(state.highScore, state.userPoints)
+      dispatch({type: 'setHighscore', payload: Math.max(state.highScore, state.userPoints)})
+    }
   }
 
   return (
     <div className="quiz">
       <div className="progress-bar">
-        <progress value={state.num} max={15}>
+        <progress value={state.num} max={14}>
           {" "}
         </progress>
         <p>
