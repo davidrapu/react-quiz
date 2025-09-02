@@ -34,7 +34,7 @@ export default function Quiz() {
   return (
     <div className="quiz">
       <div className="progress-bar">
-        <progress value={state.num + 1} max={15}>
+        <progress value={state.num} max={15}>
           {" "}
         </progress>
         <p>
@@ -50,9 +50,13 @@ export default function Quiz() {
       <Question questionObj={questions[state.num]} state={state} dispatch={dispatch} />
       <div className="timer-next-container">
         <p>17:30</p>
-        <div className="buttons">
-          <Button onClick={handleNext}>Next ▶</Button>
-        </div>
+        {state.selectedId != null ?
+          <div className="buttons">
+            <Button onClick={handleNext}>Next ▶</Button>
+          </div>
+          :
+          ""
+        }
       </div>
     </div>
   );
