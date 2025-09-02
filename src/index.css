@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Codystar:wght@300;400&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Outfit:wght@100..900&display=swap');
+
+:root {
+
+  --color-darkest: #343a40;
+  --color-dark: #495057;
+  --color-medium: #ced4da;
+  --color-light: #f1f3f5;
+
+  --color-theme: #1098ad;
+  --color-accent: #ffa94d;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body{
+  font-family: "Codystar", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: var(--color-darkest);
+  color: var(--color-light);
+}
+header {
+  width: 100%;
+  display: flex;
+  column-gap: 0.2em;
+}
+header img{
+  width: 10em;
+}
+header h1{
+  font-size: clamp(1rem, 2rem + 2vw, 90rem);
+  color: var(--color-medium);
+  font-weight: 600;
+}
+main{ 
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+
+  margin-top: 2em;
+  display: flex;
+  justify-content: center;
+  padding: 0 2em;
+  height: fit-content;
+
+  color: var(--color-light);
+}
+main .intro{
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5em;
+  text-align: center;
+  align-items: center;
+}
+.intro h2{
+  margin: 0;
+  font-size: calc(2rem + 0.9vw);
+  font-weight: 400;
+}
+.intro p{
+  font-weight: 600;
+}
+.intro button {
+  background-color: var(--color-dark);
+  border: none;
+  color: var(--color-light);
+  font-size: 0.9em;
+  width: fit-content;
+  padding: calc(0.8em + 0.0625em);
+  border-radius: 3.1250em;
+  cursor: pointer;
+  font-weight: 700;
+}
+.intro button:hover{
+  background-color: var(--color-darkest);
+  border: 0.1250em solid var(--color-dark);
+}
+.quiz {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2em;
+}
+progress {
+  width: 100%;
+  border-radius: 6.2500em;
+  margin-bottom: 1em;
+  -webkit-appearance: none;
+  border-radius: 2em;
+  height: 0.6250em;
+  margin-bottom: 0.5625em;
+}
+
+::-webkit-progress-value{
+  background-color: var(--color-theme);
+  border-radius: 6.2500em;
+  transition: all 0.6s ease-out;
+}
+::-webkit-progress-bar{
+  background-color: var(--color-medium);
+  border-radius: 6.2500em;
+}
+
+.progress-bar p{
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  font-size: 0.8125em;
+}
+
+.question-answer-container{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  row-gap: 1em;
+}
+.question-answer-container h2{
+  font-weight: 600;
+  margin: 0;
+  font-size: 1.0625em;
+}
+.question-answer-container .answers{
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.8em;
+}
+.answers .answer {
+  background-color: var(--color-dark);
+  color: var(--color-light);
+  border: 0.1250em solid var(--color-dark);
+  border-radius: 6.2500em;
+  text-align: left;
+  padding: 1em 1.5em ;
+  font-size: 0.85em;
+  font-weight: 550;
+  transition: all 0.4s ease-out;
+  cursor: pointer;
+}
+.answer:hover{
+  background-color: var(--color-darkest);
+  transform: translateX(20px);
+}
+
+.timer-next-container{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.timer-next-container p{
+  border: 0.1250em solid var(--color-dark);
+  border-radius: 2em;
+  font-size: 1em;
+  width: auto;
+  text-align: center;
+  padding: 0.8em 1.2em;
+  cursor: pointer;
+  margin: 0;
+}
+.timer-next-container button{
+  font-size: 1em;
+  width: auto;
+  padding: 0.8em 1.5em;
+  text-align: center;
+  background-color: var(--color-dark);
+  border: 0.1250em solid var(--color-dark);
+  color: var(--color-light);
+  cursor: pointer;
+  border-radius: 2em;
+  transition: all 0.3s ease-out;
+}
+.timer-next-container button:hover{
+  background-color: var(--color-darkest);
+}
+
+@media (min-width: 75em){
+  header{
+    h1{
+      font-size: 6em;
+    }
+  }
+  .progress-bar{
+    p{
+      font-size: 1.2em;
+    }
+  }
+  .question-answer-container{
+    h2{
+      font-size: 1.5em;
+    }
+    .answer{
+      padding: 1.15em 1.8em;
+      font-size: 1em ;
+    }
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce){
+    * {
+        transition: none;
+        animation: none;
+    }
+}
