@@ -3,7 +3,7 @@ import Button from "./Button";
 import Quiz from "./quiz/Quiz";
 
 export default function Main() {
-  const [hasStarted, setHasStarted] = useState(true);
+  const [hasStarted, setHasStarted] = useState(false);
   function handleQuizStart() {
     setHasStarted(true);
   }
