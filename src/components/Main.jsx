@@ -11,7 +11,8 @@ const initialState = {
   prevSelectedId: null,
   highScore: Number(localStorage.getItem('highScore')) || 0,
   // Intro | Start | Finish
-  status: 'intro'
+  status: 'intro',
+  secondsRemaining: 0
 };
 function reducer(state, action) {
   switch (action.type) {
@@ -35,6 +36,10 @@ function reducer(state, action) {
       return { ...state, highScore: action.payload };
     case "reset":
       return {...initialState, highScore: state.highScore}
+    case "reduceTimer":
+      return {...state, secondsRemaining: state.secondsRemaining - 1}
+    case "setTimer":
+      return {...state, secondsRemaining: action.payload}
     default:
       return state;
   }
@@ -44,6 +49,7 @@ export default function Main() {
   const [state, dispatch] = useReducer(reducer, initialState)
   function handleQuizStart() {
     dispatch({type: 'setStatus', payload: 'start'})
+    dispatch({type: 'setTimer', payload: questionList.questions.length * 10})
   }
   function handleReset(){
     dispatch({type: 'reset'})

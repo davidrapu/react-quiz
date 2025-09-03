@@ -1,5 +1,6 @@
 import Question from "./Question";
 import Button from "../Button";
+import Timer from "./Timer";
 export default function Quiz({state, dispatch, questions}) {
   function handleNext(){
     if (state.num < questions.length -1) dispatch({type : 'Next'})
@@ -28,7 +29,7 @@ export default function Quiz({state, dispatch, questions}) {
       </div>
       <Question questionObj={questions[state.num]} state={state} dispatch={dispatch} />
       <div className="timer-next-container">
-        <p>17:30</p>
+        <Timer dispatch={dispatch} state={state} />
         {state.selectedId != null ?
           <div className="buttons">
             <Button onClick={handleNext}>Next ▶</Button>
